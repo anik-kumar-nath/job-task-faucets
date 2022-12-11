@@ -4,10 +4,13 @@ export const ContextAPI = createContext();
 
 const AuthContext = ({ children }) => {
     const [profile, setProfile] = useState();
+    const [network, setNetwork] = useState({});
 
     const authInfo = {
         profile,
-        setProfile
+        setProfile,
+        network,
+        setNetwork
     };
 
     return (

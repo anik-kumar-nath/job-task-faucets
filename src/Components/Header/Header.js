@@ -2,7 +2,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import Dropdown from 'react-bootstrap/Dropdown';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import manIcon from './../../Assets/man.svg';
 import { ContextAPI } from '../../AuthContext/AuthContext';
 import MetaMask from './../../Assets/MetaMask.svg';
@@ -61,13 +61,14 @@ const networkList = [
     },
 ];
 const Header = () => {
-    const [network, setNetwork] = useState(networkList[0]);
-
+    const { profile, network, setNetwork } = useContext(ContextAPI);
+    useEffect(() => {
+        setNetwork(networkList[3])
+    }, [])
     const [show, setShow] = useState(false);
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
-    const { profile } = useContext(ContextAPI);
 
     return (
         <div className='px-3'>
