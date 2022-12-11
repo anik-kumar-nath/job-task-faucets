@@ -1,10 +1,11 @@
 import { gapi } from 'gapi-script';
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect } from 'react';
 import GoogleLogin, { GoogleLogout } from 'react-google-login';
 import { toast } from 'react-hot-toast';
+import { ContextAPI } from '../../AuthContext/AuthContext';
 
 const Login = () => {
-    const [profile, setProfile] = useState();
+    const { profile, setProfile } = useContext(ContextAPI);
     const clientId = '69858620552-n9ia9fk6kgvonh6q7splusmik7mlkqvd.apps.googleusercontent.com';
 
     useEffect(() => {

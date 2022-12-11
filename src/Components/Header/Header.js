@@ -2,8 +2,11 @@ import Navbar from 'react-bootstrap/Navbar';
 import Dropdown from 'react-bootstrap/Dropdown';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import manIcon from './../../Assets/man.svg';
+import { ContextAPI } from '../../AuthContext/AuthContext';
+import MetaMask from './../../Assets/MetaMask.svg';
+import WalletConnect from './../../Assets/WalletConnect.svg';
 
 var primaryColor = '#950ceb';
 // import arbi from "./../../Assets/arbitrum.svg";
@@ -64,7 +67,7 @@ const Header = () => {
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
-
+    const { profile } = useContext(ContextAPI);
 
     return (
         <div className='px-3'>
@@ -90,29 +93,42 @@ const Header = () => {
                         </Button>
                         <Modal show={show} onHide={handleClose}>
                             <Modal.Header closeButton>
-                                <Modal.Title>Modal heading</Modal.Title>
+                                <Modal.Title>Connect your wallet</Modal.Title>
                             </Modal.Header>
-                            <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
-                            <Modal.Footer>
-                                <Button variant="secondary" onClick={handleClose}>
-                                    Close
-                                </Button>
-                                <Button variant="primary" onClick={handleClose}>
-                                    Save Changes
-                                </Button>
-                            </Modal.Footer>
+                            <Modal.Body>
+                                <div className='row w-100'>
+                                    <button className='btn bg-light col mx-2'>
+                                        <img src={MetaMask} className='w-100' alt="" />
+                                    </button>
+                                    <button className='btn bg-light col mx-2'>
+                                        <img src={WalletConnect} className='w-100' alt="" />
+                                    </button>
+                                </div>
+                            </Modal.Body>
                         </Modal>
                     </div>
                     <div>
                         <Dropdown>
                             <Dropdown.Toggle variant="" id="dropdown-basic">
-                                <img src={manIcon} className='fluid bg-white rounded-circle' height={30} alt="" />
+                                {
+                                    profile ?
+                                        <img src={profile.imageUrl} className='fluid bg-white rounded-circle' height={30} alt="" />
+                                        : <img src={manIcon} className='fluid bg-white rounded-circle' height={30} alt="" />
+                                }
                             </Dropdown.Toggle>
-                            <Dropdown.Menu>
-                                <Dropdown.Item>Login</Dropdown.Item>
-                                <Dropdown.Item>Sign Up</Dropdown.Item>
-                                <Dropdown.Item>FAQ</Dropdown.Item>
-                            </Dropdown.Menu>
+                            {
+                                profile ?
+                                    <Dropdown.Menu>
+                                        <Dropdown.Item>Log Out</Dropdown.Item>
+                                        <Dropdown.Item>FAQ</Dropdown.Item>
+                                    </Dropdown.Menu>
+                                    :
+                                    <Dropdown.Menu>
+                                        <Dropdown.Item>Log In</Dropdown.Item>
+                                        <Dropdown.Item>Sign Up</Dropdown.Item>
+                                        <Dropdown.Item>FAQ</Dropdown.Item>
+                                    </Dropdown.Menu>
+                            }
                         </Dropdown>
                     </div>
                 </Navbar.Collapse>
@@ -120,5 +136,4 @@ const Header = () => {
         </div>
     );
 };
-
 export default Header;
