@@ -1,7 +1,8 @@
 import React, { useContext } from 'react';
 import { ContextAPI } from '../../AuthContext/AuthContext';
-import Table from 'react-bootstrap/Table';
+
 import ReCapcha from '../ReCapcha/ReCapcha';
+import History from './History';
 
 const Wallet = () => {
     const { network } = useContext(ContextAPI);
@@ -23,37 +24,7 @@ const Wallet = () => {
             <br />
             <button>Send Request</button>
             <br />
-            <strong>Request History</strong>
-            <br />
-            <button>ETH Transaction History</button>
-            <button>TestLink Transaction History</button>
-            <br />
-            <div className='w-auto'>
-                <Table striped bordered >
-                    <thead>
-                        <tr>
-                            <th>sr</th>
-                            <th>Time</th>
-                            <th> Amount</th>
-                            <th>Hash</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>Jacob</td>
-                            <td>Thornton</td>
-                            <td>@fat</td>
-                        </tr>
-                    </tbody>
-                </Table>
-            </div>
+            <History></History>
         </div>
     );
 };

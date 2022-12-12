@@ -1,0 +1,32 @@
+* {
+    box-sizing: border-box;
+}
+
+table {
+    border-collapse: collapse;
+    overflow-x: auto;
+    display: block;
+    width: fit-content;
+    max-width: 100%;
+    box-shadow: 0 0 1px 1px rgba(0, 0, 0, .1);
+}
+
+td,
+th {
+    border: solid rgb(200, 200, 200) 1px !important;
+    padding: .2rem 2rem;
+}
+
+th {
+    text-align: left;
+    text-transform: uppercase;
+    border-bottom: rgb(50, 50, 100) solid 2px;
+    border-top: none;
+}
+
+td {
+    text-align: center;
+    white-space: nowrap;
+    border-bottom: none;
+    color: rgb(20, 20, 20);
+}
