@@ -129,7 +129,7 @@ const Header = () => {
                                     :
                                     <Dropdown.Menu>
                                         <Dropdown.Item ><Link to={'/login'} className='text-black'>Log In</Link></Dropdown.Item>
-                                        <Dropdown.Item><Link to={'/singup'} className='text-black'>Sing Up</Link></Dropdown.Item>
+                                        <Dropdown.Item><Link to={'/signup'} className='text-black'>Sing Up</Link></Dropdown.Item>
                                         <Dropdown.Item><Link to={'/faq'} className='text-black'>FAQ</Link></Dropdown.Item>
                                     </Dropdown.Menu>
                             }
