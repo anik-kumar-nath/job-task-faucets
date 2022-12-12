@@ -18,8 +18,7 @@ th {
 }
 
 th {
-    text-align: left;
-    text-transform: uppercase;
+    text-align: center !important;
     border-bottom: rgb(50, 50, 100) solid 2px;
     border-top: none;
 }
