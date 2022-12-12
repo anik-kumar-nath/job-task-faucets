@@ -1,12 +1,13 @@
 import { Toaster } from 'react-hot-toast';
+import { RouterProvider } from 'react-router-dom';
 import './App.css';
-import Home from './Components/Home/Home';
+import { routes } from './Routes/Routes';
 
 function App() {
   return (
     <div className="App">
-      <Home></Home>
       <Toaster />
+      <RouterProvider router={routes}></RouterProvider>
     </div>
   );
 }

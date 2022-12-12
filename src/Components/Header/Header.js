@@ -7,6 +7,8 @@ import manIcon from './../../Assets/man.svg';
 import { ContextAPI } from '../../AuthContext/AuthContext';
 import MetaMask from './../../Assets/MetaMask.svg';
 import WalletConnect from './../../Assets/WalletConnect.svg';
+import { Link } from 'react-router-dom';
+import { GoogleLogout } from 'react-google-login';
 
 var primaryColor = '#950ceb';
 // import arbi from "./../../Assets/arbitrum.svg";
@@ -61,7 +63,7 @@ const networkList = [
     },
 ];
 const Header = () => {
-    const { profile, network, setNetwork } = useContext(ContextAPI);
+    const { logOut, profile, clientId, network, setNetwork } = useContext(ContextAPI);
     useEffect(() => {
         setNetwork(networkList[3])
     }, [])
@@ -73,7 +75,7 @@ const Header = () => {
     return (
         <div className='px-3'>
             <Navbar>
-                <Navbar.Brand href="#home" className='fw-bold fs-3' style={{ 'color': primaryColor }}>Faucets</Navbar.Brand>
+                <Link className='btn fw-bold fs-3' to={'/'} style={{ 'color': primaryColor }}>Faucets</Link>
                 <Navbar.Toggle />
                 <Navbar.Collapse className="justify-content-end">
                     <div className='mx-2'>
@@ -109,6 +111,7 @@ const Header = () => {
                         </Modal>
                     </div>
                     <div>
+
                         <Dropdown>
                             <Dropdown.Toggle variant="" id="dropdown-basic">
                                 {
@@ -120,14 +123,14 @@ const Header = () => {
                             {
                                 profile ?
                                     <Dropdown.Menu>
-                                        <Dropdown.Item>Log Out</Dropdown.Item>
+                                        <Dropdown.Item> <GoogleLogout clientId={clientId} buttonText="Log out" onLogoutSuccess={logOut} /></Dropdown.Item>
                                         <Dropdown.Item>FAQ</Dropdown.Item>
                                     </Dropdown.Menu>
                                     :
                                     <Dropdown.Menu>
-                                        <Dropdown.Item>Log In</Dropdown.Item>
-                                        <Dropdown.Item>Sign Up</Dropdown.Item>
-                                        <Dropdown.Item>FAQ</Dropdown.Item>
+                                        <Dropdown.Item ><Link to={'/login'} className='text-black'>Log In</Link></Dropdown.Item>
+                                        <Dropdown.Item><Link to={'/singup'} className='text-black'>Sing Up</Link></Dropdown.Item>
+                                        <Dropdown.Item><Link to={'/faq'} className='text-black'>FAQ</Link></Dropdown.Item>
                                     </Dropdown.Menu>
                             }
                         </Dropdown>
