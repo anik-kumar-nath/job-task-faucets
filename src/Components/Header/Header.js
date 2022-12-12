@@ -1,65 +1,65 @@
+import { useContext, useEffect, useState } from 'react';
+import manIcon from './../../Assets/man.svg';
+import { ContextAPI } from '../../AuthContext/AuthContext';
+import { Link } from 'react-router-dom';
+import { GoogleLogout } from 'react-google-login';
 import Navbar from 'react-bootstrap/Navbar';
 import Dropdown from 'react-bootstrap/Dropdown';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-import { useContext, useEffect, useState } from 'react';
-import manIcon from './../../Assets/man.svg';
-import { ContextAPI } from '../../AuthContext/AuthContext';
 import MetaMask from './../../Assets/MetaMask.svg';
 import WalletConnect from './../../Assets/WalletConnect.svg';
-import { Link } from 'react-router-dom';
-import { GoogleLogout } from 'react-google-login';
-
+import wallet from "./../../Assets/wallet.png";
+import arbi from "./../../Assets/arbitrum.svg";
+import avalanche from "./../../Assets/avalanche.svg";
+import bsc from "./../../Assets/bsc.svg";
+import ethereum from "./../../Assets/ethereum1.png";
+import fantom from "./../../Assets/fantom.svg";
+import harmony from "./../../Assets/harmony.svg";
+import poa from "./../../Assets/poa.svg";
+import polygon from "./../../Assets/polygon.svg";
 var primaryColor = '#950ceb';
-// import arbi from "./../../Assets/arbitrum.svg";
-// import avalanche from "./../../Assets/avalanche.svg";
-// import bsc from "./../../Assets/bsc.svg";
-// import ethereum from "./../../Assets/ethereum.svg";
-// import fantom from "./../../Assets/fantom.svg";
-// import harmony from "./../../Assets/harmony.svg";
-// import poa from "./../../Assets/poa.svg";
-// import polygon from "./../../Assets/polygon.svg";
 
 const networkList = [
     {
         id: "syerweru",
         name: "Arbitrum Rinkeby",
-        // img: arbi,
+        img: arbi,
     },
     {
         id: "s7e8r8e",
         name: "Avalanche Fuji",
-        // img: avalanche,
+        img: avalanche,
     },
     {
         id: "fdf7we7r",
         name: "BNB Chain Testnet",
-        // img: bsc,
+        img: bsc,
     },
     {
         id: "mfsere7r7",
         name: "Ethereum Rinkeby",
-        // img: ethereum,
+        img: ethereum,
     },
     {
         id: "fd7fwser",
         name: "Fantom Testnet",
-        // img: fantom,
+        img: fantom,
     },
     {
         id: "se7r8s8er",
         name: "Harmony Testnet",
-        // img: harmony,
+        img: harmony,
     },
     {
         id: "dfser77r",
         name: "POA Network Sokol",
-        // img: poa,
+        img: poa,
     },
     {
         id: "mvnus7er",
         name: "Polygon Mumbai",
-        // img: polygon,
+        img: polygon,
     },
 ];
 const Header = () => {
@@ -78,25 +78,25 @@ const Header = () => {
                 <Link className='btn fw-bold fs-3' to={'/'} style={{ 'color': primaryColor }}>Faucets</Link>
                 <Navbar.Toggle />
                 <Navbar.Collapse className="justify-content-end">
-                    <div className='mx-2'>
+                    <div className='mx-1'>
                         <Dropdown>
                             <Dropdown.Toggle variant="bg-light border border-dark d-flex align-items-center" id="dropdown-basic">
                                 <div className='d-flex'>
-                                    👍<span className='d-none d-md-block'>  {network.name}</span>
+                                    <img src={network.img} height={20} className='m-1' alt="" /> <span className='d-none d-md-block'>  {network.name}</span>
                                 </div>
                             </Dropdown.Toggle>
                             <Dropdown.Menu>
                                 {
-                                    networkList.map(item => <Dropdown.Item key={item.id} onClick={() => setNetwork(item)} >{item.name}</Dropdown.Item>)
+                                    networkList.map(item => <Dropdown.Item key={item.id} onClick={() => setNetwork(item)} ><img src={item.img} className='mx-1' height={20} alt="" />{item.name}</Dropdown.Item>)
                                 }
                             </Dropdown.Menu>
                         </Dropdown>
                     </div>
-                    <div className='mx-2'>
+                    <div className='mx-1'>
                         <Button variant="white fw-bold" style={{ 'color': primaryColor, 'border': `2px solid ${primaryColor}` }} onClick={handleShow}>
 
-                            <div className='d-flex'>
-                                💰<span className='d-none d-md-block'> Connect Wallet</span>
+                            <div className='d-flex align-items-center'>
+                                <img src={wallet} height={20} className='m-1' alt="" /><span className='d-none d-md-block'> Connect Wallet</span>
                             </div>
                         </Button>
                         <Modal show={show} onHide={handleClose}>
@@ -116,7 +116,6 @@ const Header = () => {
                         </Modal>
                     </div>
                     <div>
-
                         <Dropdown>
                             <Dropdown.Toggle variant="" id="dropdown-basic">
                                 {

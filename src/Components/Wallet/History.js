@@ -52,8 +52,8 @@ const History = () => {
             <strong>Request History</strong>
             <br />
             <div className='d-flex flex-wrap'>
-                <button onClick={() => { setTransaction(ETH); setActive(true) }} className={`${active ? 'btn btn-primary' : 'btn btn-secondary'} mx-1`}>ETH Transaction History</button>
-                <button onClick={() => { setTransaction(TestLink); setActive(false) }} className={`${active ? 'btn btn-secondary' : 'btn btn-primary'} mx-1`}>TestLink Transaction History</button>
+                <button onClick={() => { setTransaction(ETH); setActive(true) }} className={`${active ? 'btn btn-primary' : 'btn btn-light'} m-1`}>ETH Transaction History</button>
+                <button onClick={() => { setTransaction(TestLink); setActive(false) }} className={`${active ? 'btn btn-light' : 'btn btn-primary'} m-1`}>TestLink Transaction History</button>
             </div>
             <br />
             <table>
