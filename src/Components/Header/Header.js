@@ -80,8 +80,10 @@ const Header = () => {
                 <Navbar.Collapse className="justify-content-end">
                     <div className='mx-2'>
                         <Dropdown>
-                            <Dropdown.Toggle variant="bg-light border border-dark" id="dropdown-basic">
-                                {network.name}
+                            <Dropdown.Toggle variant="bg-light border border-dark d-flex align-items-center" id="dropdown-basic">
+                                <div className='d-flex'>
+                                    👍<span className='d-none d-md-block'>  {network.name}</span>
+                                </div>
                             </Dropdown.Toggle>
                             <Dropdown.Menu>
                                 {
@@ -92,7 +94,10 @@ const Header = () => {
                     </div>
                     <div className='mx-2'>
                         <Button variant="white fw-bold" style={{ 'color': primaryColor, 'border': `2px solid ${primaryColor}` }} onClick={handleShow}>
-                            Connect Wallet
+
+                            <div className='d-flex'>
+                                💰<span className='d-none d-md-block'> Connect Wallet</span>
+                            </div>
                         </Button>
                         <Modal show={show} onHide={handleClose}>
                             <Modal.Header closeButton>
@@ -124,7 +129,7 @@ const Header = () => {
                                 profile ?
                                     <Dropdown.Menu>
                                         <Dropdown.Item> <GoogleLogout clientId={clientId} buttonText="Log out" onLogoutSuccess={logOut} /></Dropdown.Item>
-                                        <Dropdown.Item>FAQ</Dropdown.Item>
+                                        <Dropdown.Item><Link to={'/faq'} className='text-black'>FAQ</Link></Dropdown.Item>
                                     </Dropdown.Menu>
                                     :
                                     <Dropdown.Menu>
